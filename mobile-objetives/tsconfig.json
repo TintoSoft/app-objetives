@@ -1,6 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["components/*"],
+      "pages/*": ["pages/*"],
+      "utils/*": ["utils/*"],
+      "graphqlService/*": ["graphqlService/*"]
+  },
+  },
+  "rootDir": "./"
 }

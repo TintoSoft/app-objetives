@@ -1,20 +1,21 @@
+import { ApolloClient, ApolloProvider } from '@apollo/client'
+import { Main } from 'components/Main'
+import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { NativeRouter } from 'react-router-native'
+import createApolloClient from 'utils/apolloClient'
 
-export const App = () => {
+const apolloClient = createApolloClient() as unknown as ApolloClient<unknown>
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx start working on your app probando</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApolloProvider client={apolloClient}>
+      <StatusBar style="light" />
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
+    </ApolloProvider>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+export default registerRootComponent(App)
