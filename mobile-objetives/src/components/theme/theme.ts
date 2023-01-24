@@ -1,4 +1,3 @@
-// TODO ver como gestionar el theme en una app react native, evitar importar todo el rato, algo como styled component
 export const theme = {
   appBar: {
     primary: '#24292e',
@@ -12,12 +11,27 @@ export const theme = {
     white: '#fefefe'
   },
   fontSizes: {
-    main: 'System',
     big: 18,
     small: 10
   },
   fontWeight: {
     normal: '400',
     bold: '700'
+  },
+  spaces: {
+    xxs: 5,
+    xs: 10,
+    s: 15,
+    m: 20,
+    l: 30,
+    xl: 40,
+    xxl: 50,
+    xxxl: 60,
+    xxxxl: 70
+  },
+  radius: {
+    s: 5,
+    m: 10,
+    l: 15
   }
 }

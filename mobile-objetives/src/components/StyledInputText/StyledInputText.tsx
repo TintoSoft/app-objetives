@@ -1,5 +1,7 @@
+import { StyledText } from 'components/StyledText'
+import { theme } from 'components/theme'
 import React from 'react'
-import { TextInput, StyleSheet, TextInputProps } from 'react-native'
+import { TextInput, StyleSheet, TextInputProps, View } from 'react-native'
 
 const styles = StyleSheet.create({
   textInput: {
@@ -7,13 +9,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#999',
     paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginBottom: 10
+    paddingVertical: 10
   },
-  error: { borderColor: 'red' }
+  error: { borderColor: 'red' },
+  label: { marginBottom: theme.spaces.xxs }
 })
 
-export const StyledInputText: React.FC<TextInputProps & { error?: boolean }> = ({ style, error, ...props }) => {
+type Props = TextInputProps & { error?: boolean; label?: string }
+
+export const StyledInputText: React.FC<Props> = ({ style, error, label, ...props }) => {
   const inputStyles = [styles.textInput, error && styles.error, style]
-  return <TextInput style={inputStyles} {...props} />
+  return (
+    <View>
+      {label && (
+        <StyledText style={styles.label} bold>
+          {label}
+        </StyledText>
+      )}
+      <TextInput style={inputStyles} {...props} />
+    </View>
+  )
 }

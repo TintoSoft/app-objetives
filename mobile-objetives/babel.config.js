@@ -11,7 +11,8 @@ module.exports = function (api) {
             components: './src/components',
             pages: './src/pages',
             utils: './src/utils',
-            graphqlService: './src/graphqlService'
+            graphqlService: './src/graphqlService',
+            core: './src/core'
           },
           extensions: ['.js', '.jsx', '.ts', '.tsx']
         }
