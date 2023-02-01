@@ -1,4 +1,44 @@
-export const theme = {
+import { TextStyle } from 'react-native'
+
+type Spaces = {
+  xxs: number
+  xs: number
+  s: number
+  m: number
+  l: number
+  xl: number
+  xxl: number
+  xxxl: number
+  xxxxl: number
+}
+
+type FontSizes = {
+  big: number
+  small: number
+}
+
+type FontWeight = {
+  normal: TextStyle['fontWeight']
+  bold: TextStyle['fontWeight']
+}
+type Radius = {
+  s: number
+  m: number
+  l: number
+}
+type Colors = {
+  [key: string]: string
+}
+
+type Theme = {
+  appBar: Colors
+  colors: Colors
+  fontSizes: FontSizes
+  fontWeight: FontWeight
+  spaces: Spaces
+  radius: Radius
+}
+export const theme: Theme = {
   appBar: {
     primary: '#24292e',
     textPrimary: '#fff',
@@ -8,7 +48,9 @@ export const theme = {
     textPrimary: '#24292e',
     textSecondary: '#586069',
     primary: '#32CBFF',
-    white: '#fefefe'
+    white: '#fefefe',
+    inputBorder: '#999',
+    error: '#ff2342'
   },
   fontSizes: {
     big: 18,

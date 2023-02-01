@@ -5,22 +5,23 @@ import { TextInput, StyleSheet, TextInputProps, View } from 'react-native'
 
 const styles = StyleSheet.create({
   textInput: {
-    borderRadius: 5,
+    borderRadius: theme.radius.s,
     borderWidth: 1,
-    borderColor: '#999',
-    paddingHorizontal: 20,
-    paddingVertical: 10
+    borderColor: theme.colors.inputBorder,
+    paddingHorizontal: theme.spaces.m,
+    paddingVertical: theme.spaces.xs
   },
-  error: { borderColor: 'red' },
+  error: { borderColor: theme.colors.error },
   label: { marginBottom: theme.spaces.xxs }
 })
 
-type Props = TextInputProps & { error?: boolean; label?: string }
+export type StyledInputTextProps = TextInputProps & { error?: boolean; label?: string }
 
-export const StyledInputText: React.FC<Props> = ({ style, error, label, ...props }) => {
-  const inputStyles = [styles.textInput, error && styles.error, style]
+export const StyledInputText: React.FC<StyledInputTextProps> = ({ style, error, label, ...props }) => {
+  const inputStyles = [styles.textInput, error && styles.error]
+
   return (
-    <View>
+    <View style={style}>
       {label && (
         <StyledText style={styles.label} bold>
           {label}

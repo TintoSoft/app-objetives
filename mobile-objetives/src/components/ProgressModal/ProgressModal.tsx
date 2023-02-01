@@ -1,10 +1,10 @@
-import { DateInput } from 'components/DateInput'
 import { ImageButton } from 'components/ImageButton'
-import { StyledInputText } from 'components/StyledInputText'
 import { theme } from 'components/theme'
 import { Progress } from 'core/domain/progress.model'
 import React from 'react'
 import { Modal, View, StyleSheet } from 'react-native'
+import { Formik } from 'formik'
+import { FormContent } from './components/FormContent'
 
 const styles = StyleSheet.create({
   modalWrapper: {
@@ -24,9 +24,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5
-  },
-  inputWrapper: {
-    marginTop: theme.spaces.s
   }
 })
 
@@ -36,6 +33,12 @@ type Props = {
 }
 
 export const ProgressModal: React.FC<Props> = ({ activeProgress, onModalClose }) => {
+  const initialValues = {
+    title: activeProgress?.title ?? '',
+    category: activeProgress?.category ?? '',
+    date: activeProgress?.date ?? new Date(),
+    color: activeProgress?.categoryColor ?? ''
+  }
   return (
     <Modal visible={!!activeProgress} transparent animationType="slide">
       <View style={styles.modalWrapper}>
@@ -45,15 +48,9 @@ export const ProgressModal: React.FC<Props> = ({ activeProgress, onModalClose })
             onPress={onModalClose}
             imageUrl="https://www.citypng.com/public/uploads/preview/black-square-close-x-button-icon-3163191536344jbn3p5wa.png"
           />
-          <View style={styles.inputWrapper}>
-            <StyledInputText placeholder="Escribe el titulo del progreso..." label="Titulo" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <StyledInputText placeholder="Escribe la categoria del progreso..." label="Categoria" />
-          </View>
-          <View style={styles.inputWrapper}>
-            <DateInput label="Fecha" />
-          </View>
+          <Formik initialValues={initialValues} onSubmit={(values) => console.log(values)}>
+            <FormContent />
+          </Formik>
         </View>
       </View>
     </Modal>
