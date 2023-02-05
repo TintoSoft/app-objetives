@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
   label: { marginBottom: theme.spaces.xxs }
 })
 
-export type StyledInputTextProps = TextInputProps & { error?: boolean; label?: string }
+export type StyledInputTextProps = TextInputProps & { error?: boolean; label?: string; inputStyles?: TextInputProps }
 
-export const StyledInputText: React.FC<StyledInputTextProps> = ({ style, error, label, ...props }) => {
-  const inputStyles = [styles.textInput, error && styles.error]
+export const StyledInputText: React.FC<StyledInputTextProps> = ({ style, error, label, inputStyles, ...props }) => {
+  const inputAllStyles = [styles.textInput, error && styles.error, inputStyles]
 
   return (
     <View style={style}>
@@ -27,7 +27,7 @@ export const StyledInputText: React.FC<StyledInputTextProps> = ({ style, error, 
           {label}
         </StyledText>
       )}
-      <TextInput style={inputStyles} {...props} />
+      <TextInput style={inputAllStyles} {...props} />
     </View>
   )
 }

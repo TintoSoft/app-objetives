@@ -1,6 +1,7 @@
 import { theme } from 'components/theme'
 import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, TextInputProps } from 'react-native'
+import { StyledText } from 'components/StyledText'
 // import { Picker } from './components/Picker'
 
 const styles = StyleSheet.create({
@@ -21,16 +22,24 @@ const styles = StyleSheet.create({
   },
   input: {
     fontWeight: theme.fontWeight.bold
-  }
+  },
+  label: { marginBottom: theme.spaces.xxs }
   // colorPickerWrapper: { width: 100, height: 100 }
 })
 
 export type ColorPickerProps = TextInputProps & {
+  label?: string
   error?: boolean
   defaultColor?: string
   onPickerBlur?: (color?: string) => void
 }
-export const ColorPicker: React.FC<ColorPickerProps> = ({ defaultColor, onPickerBlur, onChangeText, ...restProps }) => {
+export const ColorPicker: React.FC<ColorPickerProps> = ({
+  label,
+  defaultColor,
+  onPickerBlur,
+  onChangeText,
+  ...restProps
+}) => {
   const [color, setColor] = useState(defaultColor)
 
   const RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i
@@ -46,19 +55,26 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ defaultColor, onPicker
   }
 
   return (
-    <View style={styles.container}>
-      <View style={{ ...styles.colorWrapper, ...(isValidColor && { backgroundColor: color }) }} />
-      <TextInput
-        maxLength={7}
-        style={styles.input}
-        value={color}
-        onChangeText={handleChange}
-        onBlur={handleBlur}
-        {...restProps}
-      />
-      {/* <View style={styles.colorPickerWrapper}>
+    <View>
+      {label && (
+        <StyledText style={styles.label} bold>
+          {label}
+        </StyledText>
+      )}
+      <View style={styles.container}>
+        <View style={{ ...styles.colorWrapper, ...(isValidColor && { backgroundColor: color }) }} />
+        <TextInput
+          maxLength={7}
+          style={styles.input}
+          value={color}
+          onChangeText={handleChange}
+          onBlur={handleBlur}
+          {...restProps}
+        />
+        {/* <View style={styles.colorPickerWrapper}>
         <Picker />
       </View> */}
+      </View>
     </View>
   )
 }

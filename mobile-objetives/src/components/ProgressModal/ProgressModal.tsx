@@ -5,6 +5,7 @@ import React from 'react'
 import { Modal, View, StyleSheet } from 'react-native'
 import { Formik } from 'formik'
 import { FormContent } from './components/FormContent'
+import { progressService } from 'core/services/progress'
 
 const styles = StyleSheet.create({
   modalWrapper: {
@@ -32,13 +33,41 @@ type Props = {
   onModalClose: () => void
 }
 
+type FormFields = {
+  title: string
+  category: string
+  date: Date
+  color: string
+  description: string
+  amount: string
+}
+
 export const ProgressModal: React.FC<Props> = ({ activeProgress, onModalClose }) => {
-  const initialValues = {
+  const initialValues: FormFields = {
     title: activeProgress?.title ?? '',
     category: activeProgress?.category ?? '',
     date: activeProgress?.date ?? new Date(),
-    color: activeProgress?.categoryColor ?? ''
+    color: activeProgress?.categoryColor ?? '',
+    description: activeProgress?.description ?? '',
+    amount: activeProgress?.amount.toString() ?? '0'
   }
+
+  const handleSubmit = (values: FormFields) => {
+    if (activeProgress) {
+      progressService.updateProgress({
+        id: activeProgress?.id,
+        title: values.title,
+        description: values.description,
+        category: values.category,
+        categoryColor: values.color,
+        amount: Number(values.amount),
+        date: values.date
+      })
+    }
+
+    onModalClose()
+  }
+
   return (
     <Modal visible={!!activeProgress} transparent animationType="slide">
       <View style={styles.modalWrapper}>
@@ -48,7 +77,7 @@ export const ProgressModal: React.FC<Props> = ({ activeProgress, onModalClose })
             onPress={onModalClose}
             imageUrl="https://www.citypng.com/public/uploads/preview/black-square-close-x-button-icon-3163191536344jbn3p5wa.png"
           />
-          <Formik initialValues={initialValues} onSubmit={(values) => console.log(values)}>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <FormContent />
           </Formik>
         </View>

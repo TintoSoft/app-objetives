@@ -4,6 +4,6 @@ export type Progress = {
   category: string
   categoryColor: string
   title: string
-  value: number
+  amount: number
   description?: string
 }

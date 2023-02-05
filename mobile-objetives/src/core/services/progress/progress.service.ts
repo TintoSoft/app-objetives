@@ -5,6 +5,11 @@ const getAllProgress = (): Progress[] => {
   return data
 }
 
+const updateProgress = (progress: Progress) => {
+  console.log(`update progress ${progress.id}`)
+}
+
 export const progressService = {
-  getAllProgress
+  getAllProgress,
+  updateProgress
 }

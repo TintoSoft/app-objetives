@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end'
   },
-  colorPickerWrapper: { marginLeft: theme.spaces.xs, flexBasis: '35%' }
+  colorPickerWrapper: { marginLeft: theme.spaces.xs, flexBasis: '35%' },
+  description: { marginBottom: theme.spaces.s }
 })
 
 export const FormContent = () => {
@@ -26,19 +27,35 @@ export const FormContent = () => {
       <View style={{ ...styles.inputWrapper, ...styles.category }}>
         <Input
           name="category"
-          style={{ flexBasis: '62%' }}
           placeholder="Escribe la categoria del progreso..."
+          style={{ flexBasis: '62%' }}
           label="Categoria"
         />
         <View style={styles.colorPickerWrapper}>
-          <ColorPicker name="color" defaultColor="" />
+          <ColorPicker name="color" defaultColor="" label="Color" />
         </View>
       </View>
-      <View style={styles.inputWrapper}>
-        <DatePicker name="date" label="Fecha" />
+      <View
+        style={{
+          ...styles.inputWrapper,
+          ...{ flexDirection: 'row', alignItems: 'flex-end' }
+        }}
+      >
+        <DatePicker name="date" label="Fecha" style={{ flexBasis: '62%' }} />
+        <Input name="amount" label="Cantidad" keyboardType="numeric" style={styles.colorPickerWrapper} />
       </View>
 
-      <Button title="Enviar" onPress={() => handleSubmit()} />
+      <View style={{ ...styles.inputWrapper, ...styles.description }}>
+        <Input
+          name="description"
+          label="Descripcion"
+          multiline
+          numberOfLines={5}
+          inputStyles={{ textAlignVertical: 'top' }}
+        />
+      </View>
+
+      <Button title="Guardar" onPress={() => handleSubmit()} />
     </View>
   )
 }

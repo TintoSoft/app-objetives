@@ -7,7 +7,7 @@ export const data: Progress[] = [
     description: 'Esta es la descripcion probanbdo un textop largo a ver que ocurre',
     date: new Date(2022, 1, 2),
     title: 'Entrenar en el gym',
-    value: 1,
+    amount: 4,
     categoryColor: '#54ddff'
   },
   {
@@ -16,7 +16,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 2, 2),
     title: 'Entrenar en el gym',
-    value: 1,
+    amount: 1,
     categoryColor: '#54ddff'
   },
   {
@@ -26,7 +26,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 3, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '4',
@@ -35,7 +35,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 4, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '5',
@@ -44,7 +44,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 5, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '6',
@@ -53,7 +53,7 @@ export const data: Progress[] = [
     description: 'Esta es la descripcion',
     date: new Date(2022, 1, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '7',
@@ -62,7 +62,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 2, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '8',
@@ -71,7 +71,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 3, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '9',
@@ -80,7 +80,7 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 4, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   },
   {
     id: '10',
@@ -89,6 +89,6 @@ export const data: Progress[] = [
     description: '',
     date: new Date(2022, 5, 2),
     title: 'Entrenar en el gym',
-    value: 1
+    amount: 1
   }
 ]

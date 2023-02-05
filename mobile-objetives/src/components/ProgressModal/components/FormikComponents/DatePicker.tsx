@@ -18,6 +18,7 @@ export const DatePicker: React.FC<FormikInputProps> = ({ name, ...props }) => {
 
         helpers.setValue(value)
       }}
+      {...props}
     />
   )
 }

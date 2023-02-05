@@ -15,27 +15,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     marginVertical: theme.spaces.s
-  },
-  modalWrapper: {
-    justifyContent: 'center',
-    flex: 1
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: theme.spaces.m,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  inputWrapper: {
-    marginTop: theme.spaces.xs
   }
 })
 export const ProgressList = () => {
