@@ -10,10 +10,10 @@ import { useProcessList } from './useProcessList'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    paddingBottom: theme.spaces.l
+    justifyContent: 'space-between'
   },
   wrapper: {
+    flex: 1,
     marginVertical: theme.spaces.s
   }
 })

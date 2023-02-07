@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
     "@react-native-community/datetimepicker": "6.5.2",
     "expo": "~47.0.8",
     "expo-constants": "^14.0.2",

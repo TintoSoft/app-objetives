@@ -2,7 +2,7 @@ import { ImageButton } from 'components/ImageButton'
 import { theme } from 'components/theme'
 import { Progress } from 'core/domain/progress.model'
 import React from 'react'
-import { Modal, View, StyleSheet } from 'react-native'
+import { Modal, View, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { Formik } from 'formik'
 import { FormContent } from './components/FormContent'
 import { progressService } from 'core/services/progress'
@@ -71,16 +71,18 @@ export const ProgressModal: React.FC<Props> = ({ activeProgress, onModalClose })
   return (
     <Modal visible={!!activeProgress} transparent animationType="slide">
       <View style={styles.modalWrapper}>
-        <View style={styles.modalView}>
-          <ImageButton
-            style={{ marginLeft: 'auto' }}
-            onPress={onModalClose}
-            imageUrl="https://www.citypng.com/public/uploads/preview/black-square-close-x-button-icon-3163191536344jbn3p5wa.png"
-          />
-          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-            <FormContent />
-          </Formik>
-        </View>
+        <KeyboardAvoidingView style={{ flex: 1 }}>
+          <View style={styles.modalView}>
+            <ImageButton
+              style={{ marginLeft: 'auto' }}
+              onPress={onModalClose}
+              imageUrl="https://www.citypng.com/public/uploads/preview/black-square-close-x-button-icon-3163191536344jbn3p5wa.png"
+            />
+            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+              <FormContent />
+            </Formik>
+          </View>
+        </KeyboardAvoidingView>
       </View>
     </Modal>
   )

@@ -29,7 +29,7 @@ export const AppBar = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal style={styles.scrollView}>
-        <AppBarTab to="/">Respositories</AppBarTab>
+        <AppBarTab to="/">Home</AppBarTab>
         <AppBarTab to="/singin">Sing in</AppBarTab>
       </ScrollView>
     </View>
